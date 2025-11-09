@@ -4,17 +4,16 @@ import (
 	"bytes"
 	"fmt"
 
-	capture "github.com/yupsh/capture"
-	echo "github.com/yupsh/echo"
-	yup "github.com/gloo-foo/framework"
-	. "github.com/gloo-foo/pipe"
+	gloo "github.com/gloo-foo/framework"
+	"github.com/yupsh/capture"
+	"github.com/yupsh/echo"
 )
 
 func ExampleCapture_basic() {
 	// echo "Hello, World!" | capture
 	var stdout, stderr bytes.Buffer
 
-	yup.MustRun(Pipeline(
+	gloo.MustRun(Pipeline(
 		echo.Echo("Hello, World!"),
 		capture.Capture(&stdout, &stderr),
 	))
@@ -23,4 +22,3 @@ func ExampleCapture_basic() {
 	// Output:
 	// Hello, World!
 }
-
